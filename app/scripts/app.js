@@ -1,6 +1,26 @@
-import controllersModule, { myFuncError } from 'scripts/controllers';
+import controllersModule from 'scripts/controllers';
 
-console.log('Where my app is init');
-console.log('Controller module : ');
-console.log(controllersModule);
-console.log(myFuncError);
+var nameModule = 'edMyShips';
+
+var mainModule = angular.module(nameModule, [
+    controllersModule,
+    'ngMaterial',
+    'ngRoute'
+]);
+
+mainModule.config([
+    '$routeProvider',
+    function ($routeProvider) {
+        $routeProvider
+            .when(
+                "/",
+                {
+                    controller: "HomepageController",
+                    templateUrl: "homepage.html"
+                }
+            )
+            .otherwise({ redirectTo: "/" });
+    }
+]);
+
+export default nameModule;

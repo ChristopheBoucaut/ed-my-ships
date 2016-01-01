@@ -1,5 +1,9 @@
-export function myFuncError() {
+import HomepageController from 'scripts/controllers/homepage';
 
-}
+var nameModule = 'edMyShips.controllers';
 
-export default 'MyModule';
+var controllersModule = angular.module(nameModule, []);
+
+controllersModule.controller('HomepageController', HomepageController);
+
+export default nameModule;
