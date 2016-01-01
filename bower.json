@@ -1,7 +1,9 @@
 {
-    "name": "ed-my-ships",
-    "version": "0.0.1",
-    "main": "public/app.js",
-    "dependencies": {},
-    "overrides": {}
+  "name": "ed-my-ships",
+  "version": "0.0.1",
+  "main": "public/app.js",
+  "dependencies": {
+    "angular": "~1.5.0"
+  },
+  "overrides": {}
 }
