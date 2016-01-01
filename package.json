@@ -1,31 +1,32 @@
 {
-    "name": "ed-my-ships",
-    "description": "Web app to manage your ships on Elite Dangerous.",
-    "author": "Christophe Boucaut",
-    "version": "0.0.1",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/ChristopheBoucaut/ed-my-ships"
-    },
-    "scripts": {
-        "start": "brunch watch --server",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/ChristopheBoucaut/ed-my-ships/issues"
-    },
-    "keywords": [
-        "elite",
-        "dangerous",
-        "ships"
-    ],
-    "dependencies": {
-        "brunch": "^2.0.4",
-        "javascript-brunch": ">= 1.0 < 1.9",
-        "css-brunch": ">= 1.0 < 1.9",
-        "uglify-js-brunch": ">= 1.0 < 1.9",
-        "clean-css-brunch": ">= 1.0 < 1.9",
-        "auto-reload-brunch": ">= 1.0 < 1.9"
-    }
+  "name": "ed-my-ships",
+  "description": "Web app to manage your ships on Elite Dangerous.",
+  "author": "Christophe Boucaut",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChristopheBoucaut/ed-my-ships"
+  },
+  "scripts": {
+    "start": "brunch watch --server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChristopheBoucaut/ed-my-ships/issues"
+  },
+  "keywords": [
+    "elite",
+    "dangerous",
+    "ships"
+  ],
+  "dependencies": {
+    "auto-reload-brunch": ">= 1.0 < 1.9",
+    "babel-brunch": "^6.0.0",
+    "brunch": "^2.0.4",
+    "clean-css-brunch": ">= 1.0 < 1.9",
+    "css-brunch": ">= 1.0 < 1.9",
+    "javascript-brunch": ">= 1.0 < 1.9",
+    "uglify-js-brunch": ">= 1.0 < 1.9"
+  }
 }
