@@ -10,8 +10,6 @@ exports.config =
         assets: /(bootstrap\/dist\/fonts)|(images)|(app\/views)/
 
     plugins:
-        babel:
-            presets: []
         autoReload:
             enabled:
                 js: on
