@@ -1,0 +1,26 @@
+{
+  "name": "ed-my-ships",
+  "version": "0.0.1",
+  "description": "Web app to manage your ships on Elite Dangerous.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChristopheBoucaut/ed-my-ships"
+  },
+  "keywords": [
+    "elite",
+    "dangerous",
+    "ships"
+  ],
+  "author": "Christophe Boucaut",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChristopheBoucaut/ed-my-ships/issues"
+  },
+  "dependencies": {
+    "brunch": "^2.0.4"
+  }
+}
