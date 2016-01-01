@@ -23,6 +23,7 @@
   "dependencies": {
     "auto-reload-brunch": ">= 1.0 < 1.9",
     "babel-brunch": "^6.0.0",
+    "bower": "^1.7.2",
     "brunch": "^2.0.4",
     "clean-css-brunch": ">= 1.0 < 1.9",
     "css-brunch": ">= 1.0 < 1.9",
