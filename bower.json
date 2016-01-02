@@ -5,7 +5,8 @@
   "dependencies": {
     "angular": "^1.4.8",
     "angular-route": "^1.4.8",
-    "angular-material": "~1.0.1"
+    "angular-material": "~1.0.1",
+    "cb-angular-utils": "git@github.com:ChristopheBoucaut/cb-angular-utils.git"
   },
   "overrides": {}
 }
