@@ -1,11 +1,14 @@
 import controllersModule from 'scripts/controllers';
+import servicesModule from 'scripts/services';
 
 var nameModule = 'edMyShips';
 
 var mainModule = angular.module(nameModule, [
     controllersModule,
+    servicesModule,
     'ngMaterial',
-    'ngRoute'
+    'ngRoute',
+    'cbAngular.utils.storage'
 ]);
 
 mainModule.config([
