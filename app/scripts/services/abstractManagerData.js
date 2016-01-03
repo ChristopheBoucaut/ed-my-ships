@@ -1,3 +1,5 @@
+import AbstractModel from 'scripts/models/abstractModel';
+
 class AbstractManagerData {
     constructor(storage) {
         if (this.constructor === AbstractManagerData) {
@@ -25,6 +27,10 @@ class AbstractManagerData {
     }
 
     storageData(data) {
+        if (!(data instanceof AbstractModel)) {
+            throw new TypeError('The first argument of storageData must be an instance of AbstractModel.');
+        }
+
         if (!data.id) {
             data.id = this.generateUniqueId();
         }

@@ -1,3 +1,5 @@
+import AbstractModel from 'scripts/models/abstractModel';
+
 const shipsModels = {
     'adder': 'Adder',
     'anaconda': 'Anaconda',
@@ -33,8 +35,9 @@ const shipsModels = {
 /**
  * Model to save, load and manage a ship.
  */
-class Ship {
+class Ship extends AbstractModel {
     constructor(id = null, alias = '', model = null, role = null, insuranceCost = 0, localisation = '', todoList = {}) {
+        super();
         // Auto generate id
         this.id = id;
         this.alias = alias;
