@@ -1,10 +1,12 @@
+import AbstractManagerData from 'scripts/services/abstractManagerData';
 import Ship from 'scripts/models/ship';
 
-class managerShips {
+class ManagerShips extends AbstractManagerData {
     constructor(storage) {
+        super(storage);
     }
 }
 
-managerShips.$inject = ['cbSessionStorage'];
+ManagerShips.$inject = ['cbSessionStorage'];
 
-export default managerShips;
+export default ManagerShips;
