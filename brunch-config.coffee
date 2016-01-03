@@ -5,6 +5,9 @@ exports.config =
             joinTo:
                 'js/app.js': /^app/
                 'js/vendor.js': /^(bower_components|vendor)/
+        stylesheets:
+            joinTo:
+                'css/vendor.css': /^(bower_components|vendor)/
 
     conventions:
         assets: /(bootstrap\/dist\/fonts)|(images)|(app\/views)/

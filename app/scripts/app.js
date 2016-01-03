@@ -6,8 +6,8 @@ var nameModule = 'edMyShips';
 var mainModule = angular.module(nameModule, [
     controllersModule,
     servicesModule,
-    'ngMaterial',
     'ngRoute',
+    'ngMaterial',
     'cbAngular.utils.storage'
 ]);
 
