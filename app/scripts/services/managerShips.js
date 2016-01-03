@@ -1,10 +1,17 @@
-import AbstractManagerData from 'scripts/services/abstractManagerData';
+import AbstractManagerModel from 'scripts/services/abstractManagerModel';
 import Ship from 'scripts/models/ship';
 
-class ManagerShips extends AbstractManagerData {
+class ManagerShips extends AbstractManagerModel {
     constructor(storage) {
         super(storage);
-        this.namespace = 'ships';
+    }
+
+    getNamespace() {
+        return 'ships';
+    }
+
+    getModel() {
+        return Ship;
     }
 }
 

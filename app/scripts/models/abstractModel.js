@@ -6,14 +6,13 @@ class AbstractModel {
     }
 
     /**
-     * Create the current model from JSON.
+     * Create the current model from an object.
      *
-     * @param {string} json
+     * @param {object} objectLoaded
      *
      * @return {AbstractModel} Return the object created. An instance of AbstractModel.
      */
-    static loadFromJson(json) {
-        var objectLoaded = JSON.parse(json);
+    static loadFromObject(objectLoaded) {
         var objectCreated = new this();
 
         for (let nameProp in objectLoaded) {
