@@ -1,7 +1,7 @@
 class AbstractManagerData {
     constructor(storage) {
         if (this.constructor === AbstractManagerData) {
-            throw new TypeError("Cannot construct Abstract instances directly");
+            throw new TypeError('Cannot construct Abstract instances directly');
         }
 
         this.storage = storage;
@@ -22,6 +22,18 @@ class AbstractManagerData {
 
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
             s4() + '-' + s4() + s4() + s4();
+    }
+
+    storageData(data) {
+        if (!data.id) {
+            data.id = this.generateUniqueId();
+        }
+
+        if (!this.namespace) {
+            throw new TypeError('You must set this.namespace.');
+        }
+
+        this.storage.setItem(this.namespace, data.id, data);
     }
 }
 
