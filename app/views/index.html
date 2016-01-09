@@ -9,14 +9,18 @@
         <script type="text/javascript" src="/js/app.js"></script>
     </head>
     <body>
-        <header>
+        <header ng-controller="HeaderController">
+            <md-sidenav md-component-id="left" class="md-sidenav-left">
+                Left Nav!
+            </md-sidenav>
             <md-toolbar>
                 <div class="md-toolbar-tools">
-                    <md-button class="md-icon-button" aria-label="Menu">
+                    <md-button class="md-icon-button" aria-label="Menu" ng-click="openLeftMenu()">
                         <md-icon md-svg-icon="global:menu" aria-label="Menu"></md-icon>
                     </md-button>
                     <h2>
-                        <span>{{ 'header.title'|translate }}</span>
+                        <span ng-if="title">{{ title }}</span>
+                        <span ng-if="!title">{{ 'header.title'|translate }}</span>
                     </h2>
                     <!-- <span flex></span>
                     <md-button class="md-icon-button" aria-label="More">
