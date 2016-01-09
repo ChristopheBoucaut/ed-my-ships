@@ -1,2 +1,8 @@
 {
+    "head": {
+        "base-title": "ED : Your ships"
+    },
+    "header": {
+        "title": "Gérer vos vaisseaux Elite Dangerous"
+    }
 }

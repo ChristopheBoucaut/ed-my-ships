@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html ng-app="edMyShips">
-    <head>
+    <head ng-controller="HeadController">
         <meta charset="utf-8">
-        <title>ED : Your ships</title>
+        <title ng-if="additionnalTitle">{{ additionnalTitle }} - {{ 'head.base-title'|translate }}</title>
+        <title ng-if="!additionnalTitle">{{ 'head.base-title'|translate }}</title>
         <link rel="stylesheet" href="/css/vendor.css">
         <script type="text/javascript" src="/js/vendor.js"></script>
         <script type="text/javascript" src="/js/app.js"></script>
@@ -11,16 +12,16 @@
         <header>
             <md-toolbar>
                 <div class="md-toolbar-tools">
-                    <md-button class="md-icon-button" aria-label="Settings">
-                        <!-- <md-icon md-svg-icon="img/icons/menu.svg"></md-icon> -->
+                    <md-button class="md-icon-button" aria-label="Menu">
+                        <md-icon md-svg-icon="global:menu" aria-label="Menu"></md-icon>
                     </md-button>
                     <h2>
-                        <span>I will add translator service, icons and custom the theme :)</span>
+                        <span>{{ 'header.title'|translate }}</span>
                     </h2>
-                    <span flex></span>
+                    <!-- <span flex></span>
                     <md-button class="md-icon-button" aria-label="More">
-                        <!-- <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon> -->
-                    </md-button>
+                        <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
+                    </md-button> -->
                   </div>
             </md-toolbar>
         </header>

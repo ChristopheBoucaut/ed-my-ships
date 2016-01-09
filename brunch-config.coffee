@@ -10,7 +10,7 @@ exports.config =
                 'css/vendor.css': /^(bower_components|vendor)/
 
     conventions:
-        assets: /(bootstrap\/dist\/fonts)|(images)|(app\/views)|(app\/translations)/
+        assets: /(bootstrap\/dist\/fonts)|(assets)|(app\/views)|(app\/translations)/
 
     plugins:
         autoReload:

@@ -7,7 +7,6 @@ var mainModule = angular.module(nameModule, [
     controllersModule,
     servicesModule,
     'ngRoute',
-    'ngSanitize',
     'ngMaterial',
     'pascalprecht.translate',
     'cbAngular.utils.storage'
@@ -39,7 +38,7 @@ mainModule.config([
         });
 
         $translateProvider.determinePreferredLanguage(determinePreferredLanguage);
-        $translateProvider.useSanitizeValueStrategy('sanitize');
+        $translateProvider.useSanitizeValueStrategy('escape');
 
         /**
          * Determine the preferred language for the user.
@@ -59,5 +58,18 @@ mainModule.config([
         }
     }
 ]);
+
+mainModule.config(['$mdThemingProvider',function($mdThemingProvider) {
+    $mdThemingProvider.theme('default')
+        // .primaryPalette('orange')
+        .primaryPalette('deep-orange')
+        .dark();
+}]);
+
+mainModule.config(['$mdIconProvider', function ($mdIconProvider) {
+    var defaultPathIcons = 'img/icons/';
+    $mdIconProvider
+        .icon('global:menu', defaultPathIcons+'menu.svg');
+}]);
 
 export default nameModule;
