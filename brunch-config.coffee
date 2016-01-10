@@ -8,6 +8,7 @@ exports.config =
         stylesheets:
             joinTo:
                 'css/vendor.css': /^(bower_components|vendor)/
+                'css/app.css': /^app\/scss/
 
     conventions:
         assets: /(bootstrap\/dist\/fonts)|(assets)|(app\/views)|(app\/translations)/
@@ -17,3 +18,6 @@ exports.config =
             enabled:
                 js: on
                 assets: on
+        sass:
+          options:
+            includePaths: ['app/scss']

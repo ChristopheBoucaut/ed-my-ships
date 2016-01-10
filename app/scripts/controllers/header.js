@@ -1,6 +1,7 @@
 class Header {
-    constructor($scope, $mdSidenav, headContent) {
+    constructor($scope, $location, $window, $mdSidenav, headContent) {
         $scope.title = null;
+        $scope.isHome = true;
         $scope.$on(headContent.EVENT_CHANGE_TITLE, function (event, title) {
             $scope.title = title;
         });
@@ -8,9 +9,21 @@ class Header {
         $scope.openLeftMenu = function() {
             $mdSidenav('left').toggle();
         };
+
+        $scope.backHistory = function() {
+            $window.history.back();
+        };
+
+        $scope.$on('$routeChangeSuccess', function () {
+            if ($location.path() === '/') {
+                $scope.isHome = true;
+            } else {
+                $scope.isHome = false;
+            }
+        });
     }
 }
 
-Header.$inject = ['$scope', '$mdSidenav', 'headContent'];
+Header.$inject = ['$scope', '$location', '$window', '$mdSidenav', 'headContent'];
 
 export default Header;
