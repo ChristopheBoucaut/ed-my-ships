@@ -10,8 +10,8 @@ class Header {
             $mdSidenav('left').toggle();
         };
 
-        $scope.backHistory = function() {
-            $window.history.back();
+        $scope.backHome = function() {
+            $location.path('/');
         };
 
         $scope.$on('$routeChangeSuccess', function () {

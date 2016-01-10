@@ -24,6 +24,13 @@ mainModule.config([
                     templateUrl: 'homepage.html'
                 }
             )
+            .when(
+                '/aboutit',
+                {
+                    controller: 'AboutitController',
+                    templateUrl: 'aboutit.html'
+                }
+            )
             .otherwise({ redirectTo: '/' });
     }
 ]);
@@ -68,7 +75,8 @@ mainModule.config(['$mdThemingProvider',function($mdThemingProvider) {
 mainModule.config(['$mdIconProvider', function ($mdIconProvider) {
     var defaultPathIcons = 'img/icons/';
     $mdIconProvider
-        .icon('global:menu', defaultPathIcons+'menu.svg');
+        .icon('global:menu', defaultPathIcons+'menu.svg')
+        .icon('global:back', defaultPathIcons+'back.svg');
 }]);
 
 export default nameModule;

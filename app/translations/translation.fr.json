@@ -3,7 +3,10 @@
         "base-title": "ED : Your ships"
     },
     "header": {
-        "title": "Vos vaisseaux",
+        "title": {
+            "home": "Vos vaisseaux",
+            "aboutit": "À propos"
+        },
         "navigation": {
             "aboutit": "À propos"
         }
