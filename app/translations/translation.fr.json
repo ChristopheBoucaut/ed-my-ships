@@ -10,5 +10,9 @@
         "navigation": {
             "aboutit": "À propos"
         }
+    },
+    "homepage": {
+        "add_new_ship": "Ajouter un vaisseau",
+        "not_ships": "Vous ne possédez aucun vaisseau."
     }
 }

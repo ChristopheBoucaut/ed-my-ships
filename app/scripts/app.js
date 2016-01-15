@@ -69,6 +69,7 @@ mainModule.config([
 mainModule.config(['$mdThemingProvider',function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
         .primaryPalette('deep-orange')
+        .warnPalette('indigo')
         .dark();
 }]);
 
