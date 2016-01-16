@@ -14,5 +14,10 @@
     "homepage": {
         "add_new_ship": "Ajouter un vaisseau",
         "not_ships": "Vous ne possédez aucun vaisseau."
+    },
+    "ship": {
+        "create_ship": "Créer un vaisseau",
+        "edit_ship": "Modifier votre vaisseau",
+        "see_ship": "Votre vaisseau"
     }
 }

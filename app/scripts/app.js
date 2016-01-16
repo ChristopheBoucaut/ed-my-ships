@@ -25,6 +25,13 @@ mainModule.config([
                 }
             )
             .when(
+                '/ship/:id?',
+                {
+                    controller: 'ShipController',
+                    templateUrl: 'ship.html'
+                }
+            )
+            .when(
                 '/aboutit',
                 {
                     controller: 'AboutitController',
