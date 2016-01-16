@@ -37,7 +37,10 @@
                   </div>
             </md-toolbar>
         </header>
-        <main ng-view></main>
+        <main>
+            <md-content ng-view>
+            </md-content>
+        </main>
         <script>
             (function () {
                 require('scripts/app');

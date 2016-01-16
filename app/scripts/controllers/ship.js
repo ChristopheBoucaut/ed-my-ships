@@ -1,4 +1,4 @@
-import ShipModel from 'scripts/models/ship';
+import ShipModel, {shipsModels} from 'scripts/models/ship';
 
 class Ship {
     constructor($scope, $routeParams, $translate, headContent, managerShips) {
@@ -22,8 +22,26 @@ class Ship {
             headContent.setAdditionnalTitle(title);
         });
 
+        /**
+         * Search a ship model in list models
+         *
+         * @param {string} search Search terms.
+         *
+         * @return {array} Ships results.
+         */
+        $scope.shipsModelsSearch = function (search) {
+            if (search) {
+                search = search.toLowerCase();
 
-        // @TODO : Init title head
+                return shipsModels.filter(shipModel => (shipModel.name.toLowerCase().indexOf(search) !== -1));
+            } else {
+                return shipsModels;
+            }
+        };
+
+        $scope.saveShip = function () {
+            console.log(arguments);
+        };
     }
 }
 

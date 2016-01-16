@@ -18,6 +18,17 @@
     "ship": {
         "create_ship": "Créer un vaisseau",
         "edit_ship": "Modifier votre vaisseau",
-        "see_ship": "Votre vaisseau"
+        "see_ship": "Votre vaisseau",
+        "tabs": {
+            "info": "Information",
+            "note": "Notes",
+            "todo": "À faire"
+        },
+        "edit": {
+            "modelShip": {
+                "placeholder": "Séléctionner un modèle de vaisseau",
+                "noResult": "Aucun modèle de vaisseau trouvé"
+            }
+        }
     }
 }

@@ -1,0 +1,35 @@
+<md-tabs md-dynamic-height md-border-bottom>
+    <md-tab label="{{ 'ship.tabs.info'|translate }}">
+        <md-content class="md-padding">
+            <form ng-submit='saveShip()'>
+                <md-autocomplete
+                    md-selected-item="selectedShip"
+                    md-search-text="searchShip"
+                    md-items="ship in shipsModelsSearch(searchShip)"
+                    md-item-text="ship.name"
+                    md-min-length="0"
+                    placeholder="{{ 'ship.edit.modelShip.placeholder'|translate }}"
+                >
+                    <md-item-template>
+                        <span md-highlight-text="searchShip" md-highlight-flags="^i">{{ ship.name }}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        {{ 'ship.edit.modelShip.noResult'|translate }}
+                    </md-not-found>
+                </md-autocomplete>
+            </form>
+        </md-content>
+    </md-tab>
+    <md-tab label="{{ 'ship.tabs.note'|translate }}">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">{{ "ship.tabs.note"|translate }}</h1>
+          <p>Note sur le vso</p>
+        </md-content>
+    </md-tab>
+    <md-tab label="{{ 'ship.tabs.todo'|translate }}">
+        <md-content class="md-padding">
+          <h1 class="md-display-2">{{ "ship.tabs.todo"|translate }}</h1>
+          <p>Liste de chose à faire</p>
+        </md-content>
+    </md-tab>
+</md-tabs>
