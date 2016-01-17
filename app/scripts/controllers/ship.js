@@ -39,6 +39,10 @@ class Ship {
             }
         };
 
+        $scope.changeShipModel = function (shipModel) {
+            $scope.ship.model = shipModel.id;
+        };
+
         $scope.saveShip = function () {
             console.log(arguments);
         };

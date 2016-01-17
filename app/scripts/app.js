@@ -8,6 +8,7 @@ var mainModule = angular.module(nameModule, [
     servicesModule,
     'ngRoute',
     'ngMaterial',
+    'ngMessages',
     'pascalprecht.translate',
     'cbAngular.utils.storage'
 ]);
@@ -76,6 +77,7 @@ mainModule.config([
 mainModule.config(['$mdThemingProvider',function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
         .primaryPalette('deep-orange')
+        .accentPalette('orange')
         .warnPalette('indigo')
         .dark();
 }]);

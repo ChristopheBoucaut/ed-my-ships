@@ -24,7 +24,19 @@
             "note": "Notes",
             "todo": "À faire"
         },
-        "edit": {
+        "data": {
+            "alias": {
+                "label": "Choisissez un nom pour votre vaisseau",
+                "error": {
+                    "required": "Vous devez renseigner un nom pour votre vaisseau"
+                }
+            },
+            "insuranceCost": {
+                "label": "Prix de l'assurance du vaisseau",
+                "error": {
+                    "required_digit": "Seul des chiffres sont autorisés"
+                }
+            },
             "modelShip": {
                 "placeholder": "Séléctionner un modèle de vaisseau",
                 "noResult": "Aucun modèle de vaisseau trouvé"
