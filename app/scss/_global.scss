@@ -26,3 +26,7 @@ body {
 .md-autocomplete-suggestions-container li .highlight {
     color: rgb(255,87,34);
 }
+
+md-autocomplete[md-floating-label] md-input-container {
+    padding-bottom: 0;
+}

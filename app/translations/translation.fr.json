@@ -25,6 +25,10 @@
             "todo": "À faire"
         },
         "data": {
+            "modelShip": {
+                "placeholder": "Séléctionner un modèle de vaisseau",
+                "noResult": "Aucun modèle de vaisseau trouvé"
+            },
             "alias": {
                 "label": "Choisissez un nom pour votre vaisseau",
                 "error": {
@@ -37,9 +41,17 @@
                     "required_digit": "Seul des chiffres sont autorisés"
                 }
             },
-            "modelShip": {
-                "placeholder": "Séléctionner un modèle de vaisseau",
-                "noResult": "Aucun modèle de vaisseau trouvé"
+            "localisation": {
+                "label": "Position du vaisseau"
+            },
+            "note": {
+                "label": "Vous pouvez renseigner des notes sur ce vaisseau"
+            },
+            "todo": {
+                "add": {
+                    "label": "Ajouter une tâche",
+                    "register": "Ajouter"
+                }
             }
         }
     }

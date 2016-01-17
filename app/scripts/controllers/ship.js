@@ -40,10 +40,19 @@ class Ship {
         };
 
         $scope.changeShipModel = function (shipModel) {
-            $scope.ship.model = shipModel.id;
+            if (shipModel) {
+                $scope.ship.model = shipModel.id;
+            } else {
+                $scope.ship.model = null;
+            }
+        };
+
+        $scope.addTask = function () {
+            console.log('on yeah');
         };
 
         $scope.saveShip = function () {
+            console.log('submit');
             console.log(arguments);
         };
     }
