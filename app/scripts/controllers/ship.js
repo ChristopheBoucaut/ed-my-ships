@@ -1,7 +1,7 @@
 import ShipModel, {shipsModels} from 'scripts/models/ship';
 
 class Ship {
-    constructor($scope, $routeParams, $translate, $mdDialog, headContent, headerContent, managerShips) {
+    constructor($scope, $routeParams, $location, $translate, $mdDialog, headContent, headerContent, managerShips) {
         // Init $scope variables.
         $scope.notSaved = false;
         var titleTag;
@@ -30,9 +30,7 @@ class Ship {
             });
         }
 
-
-        // Add button to save the ship.
-        headerContent.setMainAction(saveShip, 'global:save');
+        refreshMainAction();
 
         /**
          * Search a ship model in list models
@@ -94,6 +92,19 @@ class Ship {
         }
 
         /**
+         * Refresh main action in header.
+         */
+        function refreshMainAction() {
+            if ($scope.editMode) {
+                // Add button to save the ship.
+                headerContent.setMainAction(saveShip, 'global:save');
+            } else {
+                // Add button to edit the ship.
+                headerContent.setMainAction(editShip, 'global:edit');
+            }
+        }
+
+        /**
          * Check ship config and save if not errors.
          */
         function saveShip() {
@@ -141,12 +152,28 @@ class Ship {
                 return;
             } else {
                 // No errors ! Seriously ?! YEAH ! SAVE THIS SHIP NOW ! JUST DO IT !
+                var newShipCreate = $scope.ship.id === null;
                 managerShips.storageModel($scope.ship);
+                if (newShipCreate) {
+                    // New ship, redirect after storage
+                    $location.path($location.path()+"/"+$scope.ship.id).replace();
+                } else {
+                    $scope.editMode = false;
+                    refreshMainAction();
+                }
             }
+        }
+
+        /**
+         * Switch in edit mode.
+         */
+        function editShip() {
+            $scope.editMode = true;
+            refreshMainAction();
         }
     }
 }
 
-Ship.$inject = ['$scope', '$routeParams', '$translate', '$mdDialog', 'headContent', 'headerContent', 'managerShips'];
+Ship.$inject = ['$scope', '$routeParams', '$location', '$translate', '$mdDialog', 'headContent', 'headerContent', 'managerShips'];
 
 export default Ship;

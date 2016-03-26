@@ -88,6 +88,7 @@ mainModule.config(['$mdIconProvider', function ($mdIconProvider) {
     $mdIconProvider
         .icon('global:menu', defaultPathIcons+'menu.svg')
         .icon('global:back', defaultPathIcons+'back.svg')
+        .icon('global:edit', defaultPathIcons+'edit.svg')
         .icon('global:save', defaultPathIcons+'save.svg');
 }]);
 
