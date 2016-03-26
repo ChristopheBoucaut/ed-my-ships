@@ -7,72 +7,32 @@ class Ship {
         var titleTag;
 
         if ($routeParams.id) {
-            // @TODO : Read mode
-            $scope.editMode = false;
-            titleTag = "ship.see_ship";
-        } else {
-            // @TODO : Create mode
+            // Start with a ship existing
+            $scope.ship = managerShips.loadModel($routeParams.id);
+            if ($scope.ship) {
+                var shipModelInitial = findShipModelFromIdModel($scope.ship.model);
+                if (shipModelInitial) {
+                    $scope.searchShip = shipModelInitial.name;
+                }
+                $scope.editMode = false;
+                headContent.setAdditionnalTitle($scope.ship.alias);
+            }
+        }
+
+        if ($scope.ship === undefined) {
+            // Create mode (or if the id in the route is invalid).
             $scope.ship = new ShipModel();
             $scope.editMode = true;
             titleTag = "ship.create_ship";
+            // Init title.
+            $translate(titleTag).then(function (title) {
+                headContent.setAdditionnalTitle(title);
+            });
         }
 
-        // Init title, @TODO : Change setAdditionnalTitle to move $translate in the method.
-        $translate(titleTag).then(function (title) {
-            headContent.setAdditionnalTitle(title);
-        });
 
-        headerContent.setMainAction(
-            function () {
-                var errorsMsg = [];
-                $scope.shipForm.$setSubmitted(true);
-                if (!$scope.shipForm.$valid) {
-                    // Bad values in form
-                    // Prepare error messages by angular.
-                    for (var errorType in $scope.shipForm.$error) {
-                        var currentErrors = $scope.shipForm.$error[errorType];
-                        for (var k in currentErrors) {
-                            errorsMsg.push('ship.errorModal.'+errorType+'.'+currentErrors[k].$name);
-                        }
-                    }
-                }
-
-                // Manual controls
-                if (!$scope.ship.model) {
-                    errorsMsg.push('ship.errorModal.required.model');
-                }
-
-                if (errorsMsg.length > 0) {
-                    var dialogTag = ['ship.errorModal.title', 'ship.errorModal.fix'];
-                    var msgsTag = [dialogTag, errorsMsg];
-                    $translate(msgsTag).then(function (msgsTranslated) {
-                        var dialog = msgsTranslated[dialogTag.join(',')];
-                        var errors = msgsTranslated[errorsMsg.join(',')];
-                        var contentDialog = '<ul>';
-                        for (var k in errors) {
-                            contentDialog += '<li>'+errors[k] + '</li>';
-                        }
-                        contentDialog += '</ul>';
-                        alert = $mdDialog.alert({
-                            title: dialog['ship.errorModal.title'],
-                            htmlContent: contentDialog,
-                            ok: dialog['ship.errorModal.fix']
-                        });
-                        $mdDialog
-                            .show( alert )
-                            .finally(function() {
-                                alert = undefined;
-                            });
-                    });
-
-                    return;
-                } else {
-                    // No errors ! Seriously ?! YEAH ! SAVE THIS SHIP NOW ! JUST DO IT !
-                    managerShips.storageModel($scope.ship);
-                }
-            },
-            'global:save'
-        );
+        // Add button to save the ship.
+        headerContent.setMainAction(saveShip, 'global:save');
 
         /**
          * Search a ship model in list models
@@ -91,6 +51,11 @@ class Ship {
             }
         };
 
+        /**
+         * Change the current ship model.
+         *
+         * @param {Object} shipModel
+         */
         $scope.changeShipModel = function (shipModel) {
             if (shipModel) {
                 $scope.ship.model = shipModel.id;
@@ -99,6 +64,11 @@ class Ship {
             }
         };
 
+        /**
+         * Add a task in the todo list.
+         *
+         * @param {Object} event Setted if the submission come from the enter key press.
+         */
         $scope.addTask = function (event) {
             // If event is undefined, user uses the button else, he uses enter key.
             if (event === undefined || event.keyCode == 13) {
@@ -107,6 +77,73 @@ class Ship {
                 $scope.ship.addTask(newTask);
             }
         };
+
+        /**
+         * Get the shipModel from its id.
+         *
+         * @param {string} idModel
+         *
+         * @return {Object}
+         */
+        function findShipModelFromIdModel(idModel) {
+            for (var i = 0; i < shipsModels.length; i++) {
+                if (shipsModels[i].id == idModel) {
+                    return shipsModels[i];
+                }
+            }
+        }
+
+        /**
+         * Check ship config and save if not errors.
+         */
+        function saveShip() {
+            var errorsMsg = [];
+            $scope.shipForm.$setSubmitted(true);
+            if (!$scope.shipForm.$valid) {
+                // Bad values in form
+                // Prepare error messages by angular.
+                for (var errorType in $scope.shipForm.$error) {
+                    var currentErrors = $scope.shipForm.$error[errorType];
+                    for (var k in currentErrors) {
+                        errorsMsg.push('ship.errorModal.'+errorType+'.'+currentErrors[k].$name);
+                    }
+                }
+            }
+
+            // Manual controls
+            if (!$scope.ship.model) {
+                errorsMsg.push('ship.errorModal.required.model');
+            }
+
+            if (errorsMsg.length > 0) {
+                var dialogTag = ['ship.errorModal.title', 'ship.errorModal.fix'];
+                var msgsTag = [dialogTag, errorsMsg];
+                $translate(msgsTag).then(function (msgsTranslated) {
+                    var dialog = msgsTranslated[dialogTag.join(',')];
+                    var errors = msgsTranslated[errorsMsg.join(',')];
+                    var contentDialog = '<ul>';
+                    for (var k in errors) {
+                        contentDialog += '<li>'+errors[k] + '</li>';
+                    }
+                    contentDialog += '</ul>';
+                    alert = $mdDialog.alert({
+                        title: dialog['ship.errorModal.title'],
+                        htmlContent: contentDialog,
+                        ok: dialog['ship.errorModal.fix']
+                    });
+                    $mdDialog
+                        .show( alert )
+                        .finally(function() {
+                            alert = undefined;
+                        });
+                });
+
+                return;
+            } else {
+                // No errors ! Seriously ?! YEAH ! SAVE THIS SHIP NOW ! JUST DO IT !
+                managerShips.storageModel($scope.ship);
+            }
+        }
     }
 }
 
