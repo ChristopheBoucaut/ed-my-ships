@@ -53,6 +53,17 @@
                     "register": "Ajouter"
                 }
             }
+        },
+        "errorModal": {
+            "title": "Certains champs sont incorrects",
+            "fix": "Corriger",
+            "required": {
+                "alias": "Veuillez renseigner un nom pour votre vaisseau",
+                "model": "Veuillez choisir un model de vaisseau"
+            },
+            "number": {
+                "insuranceCost": "L'assurance renseignée est incorrecte."
+            }
         }
     }
 }

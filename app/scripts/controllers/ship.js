@@ -1,7 +1,7 @@
 import ShipModel, {shipsModels} from 'scripts/models/ship';
 
 class Ship {
-    constructor($scope, $routeParams, $translate, headContent, headerContent, managerShips) {
+    constructor($scope, $routeParams, $translate, $mdDialog, headContent, headerContent, managerShips) {
         // Init $scope variables.
         $scope.notSaved = false;
         var titleTag;
@@ -24,7 +24,52 @@ class Ship {
 
         headerContent.setMainAction(
             function () {
-                console.log('save ship !');
+                var errorsMsg = [];
+                $scope.shipForm.$setSubmitted(true);
+                if (!$scope.shipForm.$valid) {
+                    // Bad values in form
+                    // Prepare error messages by angular.
+                    for (var errorType in $scope.shipForm.$error) {
+                        var currentErrors = $scope.shipForm.$error[errorType];
+                        for (var k in currentErrors) {
+                            errorsMsg.push('ship.errorModal.'+errorType+'.'+currentErrors[k].$name);
+                        }
+                    }
+                }
+
+                // Manual controls
+                if (!$scope.ship.model) {
+                    errorsMsg.push('ship.errorModal.required.model');
+                }
+
+                if (errorsMsg.length > 0) {
+                    var dialogTag = ['ship.errorModal.title', 'ship.errorModal.fix'];
+                    var msgsTag = [dialogTag, errorsMsg];
+                    $translate(msgsTag).then(function (msgsTranslated) {
+                        var dialog = msgsTranslated[dialogTag.join(',')];
+                        var errors = msgsTranslated[errorsMsg.join(',')];
+                        var contentDialog = '<ul>';
+                        for (var k in errors) {
+                            contentDialog += '<li>'+errors[k] + '</li>';
+                        }
+                        contentDialog += '</ul>';
+                        alert = $mdDialog.alert({
+                            title: dialog['ship.errorModal.title'],
+                            htmlContent: contentDialog,
+                            ok: dialog['ship.errorModal.fix']
+                        });
+                        $mdDialog
+                            .show( alert )
+                            .finally(function() {
+                                alert = undefined;
+                            });
+                    });
+
+                    return;
+                } else {
+                    // No errors ! Seriously ?! YEAH ! SAVE THIS SHIP NOW ! JUST DO IT !
+                    managerShips.storageModel($scope.ship);
+                }
             },
             'global:save'
         );
@@ -62,14 +107,9 @@ class Ship {
                 $scope.ship.addTask(newTask);
             }
         };
-
-        $scope.saveShip = function () {
-            console.log('submit');
-            console.log(arguments);
-        };
     }
 }
 
-Ship.$inject = ['$scope', '$routeParams', '$translate', 'headContent', 'headerContent', 'managerShips'];
+Ship.$inject = ['$scope', '$routeParams', '$translate', '$mdDialog', 'headContent', 'headerContent', 'managerShips'];
 
 export default Ship;

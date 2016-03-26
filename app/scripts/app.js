@@ -7,6 +7,7 @@ var mainModule = angular.module(nameModule, [
     controllersModule,
     servicesModule,
     'ngRoute',
+    'ngSanitize',
     'ngMaterial',
     'ngMessages',
     'pascalprecht.translate',
