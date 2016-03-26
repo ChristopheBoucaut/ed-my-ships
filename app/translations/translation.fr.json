@@ -17,8 +17,8 @@
     },
     "ship": {
         "create_ship": "Créer un vaisseau",
-        "edit_ship": "Modifier votre vaisseau",
         "see_ship": "Votre vaisseau",
+        "saved": "Vaisseau enregistré",
         "tabs": {
             "info": "Information",
             "note": "Notes",
@@ -27,7 +27,8 @@
         "data": {
             "modelShip": {
                 "placeholder": "Séléctionner un modèle de vaisseau",
-                "noResult": "Aucun modèle de vaisseau trouvé"
+                "noResult": "Aucun modèle de vaisseau trouvé",
+                "viewMode": "Modèle du vaisseau"
             },
             "alias": {
                 "label": "Choisissez un nom pour votre vaisseau",
@@ -39,19 +40,29 @@
                 "label": "Prix de l'assurance du vaisseau",
                 "error": {
                     "required_digit": "Seul des chiffres sont autorisés"
+                },
+                "viewMode": {
+                    "label": "Assurance du vaisseau",
+                    "credit": "crédits"
                 }
             },
             "localisation": {
-                "label": "Position du vaisseau"
+                "label": "Position du vaisseau",
+                "viewMode": "Position du vaisseau"
             },
             "note": {
-                "label": "Vous pouvez renseigner des notes sur ce vaisseau"
+                "label": "Vous pouvez renseigner des notes sur ce vaisseau",
+                "viewMode": {
+                    "title": "Vos notes sur le vaisseau",
+                    "nothing": "Aucune note renseignée"
+                }
             },
             "todo": {
                 "add": {
                     "label": "Ajouter une tâche",
                     "register": "Ajouter"
-                }
+                },
+                "viewMode": "A faire"
             }
         },
         "errorModal": {

@@ -1,5 +1,8 @@
 import AbstractModel from 'scripts/models/abstractModel';
 
+// Init a converter to transform markdown to html.
+var converter = new window.showdown.Converter();
+
 // Just container for ship model.
 class ShipModel {
     constructor(id, name) {
@@ -70,6 +73,13 @@ class Ship extends AbstractModel {
             description: description,
             done: false
         });
+    }
+
+    /**
+     * Display note (translate markdown to html).
+     */
+    displayNote() {
+        return converter.makeHtml(this.note);
     }
 }
 

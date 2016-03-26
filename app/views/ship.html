@@ -11,6 +11,7 @@
                                     md-items="shipModel in shipsModelsSearch(searchShip)"
                                     md-item-text="shipModel.name"
                                     md-min-length="0"
+                                    md-selected-item="currentShipModel"
                                     md-selected-item-change="changeShipModel(shipModel)"
                                     md-floating-label="{{ 'ship.data.modelShip.placeholder'|translate }}"
                                     flex="100"
@@ -83,3 +84,24 @@
         </md-tab>
     </md-tabs>
 </form>
+
+<div ng-if="!editMode" layout="row" layout-sm="column" layout-xs="column" layout-margin>
+    <div flex="40" flex-sm="100" flex-xs="100">
+        <h2>{{ 'ship.see_ship'|translate }}</h2>
+        {{ 'ship.data.modelShip.viewMode'|translate }} : {{ currentShipModel.name }}<br>
+        <span ng-if="ship.insuranceCost">{{ 'ship.data.insuranceCost.viewMode.label'|translate }} : {{ ship.insuranceCost|number }} {{ 'ship.data.insuranceCost.viewMode.credit'|translate }}<br></span>
+        <span ng-if="ship.localisation">{{ 'ship.data.localisation.viewMode'|translate }} : {{ ship.localisation }}<br></span>
+        <h2>{{ 'ship.data.todo.viewMode'|translate }}</h2>
+        <md-list>
+            <md-list-item ng-repeat="task in ship.todoList | orderBy:'done'">
+                <p ng-class="{'task-done': task.done}">{{ task.description }}</p>
+                <md-checkbox ng-model="task.done" ng-change="changeTaskStatus()"></md-checkbox>
+            </md-list-item>
+        </md-list>
+    </div>
+    <div flex="60" flex-sm="100" flex-xs="100">
+        <h2>{{ 'ship.data.note.viewMode.title'|translate }}</h2>
+        <div ng-if="ship.note" ng-bind-html="ship.displayNote()" class="ship-note"></div>
+        <span ng-if="!ship.note">{{ 'ship.data.note.viewMode.nothing'|translate }}</span>
+    </div>
+</div>

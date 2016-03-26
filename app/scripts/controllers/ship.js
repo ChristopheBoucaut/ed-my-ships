@@ -1,7 +1,7 @@
 import ShipModel, {shipsModels} from 'scripts/models/ship';
 
 class Ship {
-    constructor($scope, $routeParams, $location, $translate, $mdDialog, headContent, headerContent, managerShips) {
+    constructor($scope, $routeParams, $location, $translate, $mdDialog, $mdToast, headContent, headerContent, managerShips) {
         // Init $scope variables.
         $scope.notSaved = false;
         var titleTag;
@@ -13,6 +13,7 @@ class Ship {
                 var shipModelInitial = findShipModelFromIdModel($scope.ship.model);
                 if (shipModelInitial) {
                     $scope.searchShip = shipModelInitial.name;
+                    $scope.currentShipModel = shipModelInitial;
                 }
                 $scope.editMode = false;
                 headContent.setAdditionnalTitle($scope.ship.alias);
@@ -75,6 +76,9 @@ class Ship {
                 $scope.ship.addTask(newTask);
             }
         };
+
+        // When the user change the status of a task in view mode.
+        $scope.changeTaskStatus = storageShip;
 
         /**
          * Get the shipModel from its id.
@@ -153,7 +157,7 @@ class Ship {
             } else {
                 // No errors ! Seriously ?! YEAH ! SAVE THIS SHIP NOW ! JUST DO IT !
                 var newShipCreate = $scope.ship.id === null;
-                managerShips.storageModel($scope.ship);
+                storageShip();
                 if (newShipCreate) {
                     // New ship, redirect after storage
                     $location.path($location.path()+"/"+$scope.ship.id).replace();
@@ -171,9 +175,19 @@ class Ship {
             $scope.editMode = true;
             refreshMainAction();
         }
+
+        /**
+         * Save the current ship.
+         */
+        function storageShip() {
+            managerShips.storageModel($scope.ship);
+            $translate('ship.saved').then(function (txt) {
+                $mdToast.show($mdToast.simple().textContent(txt).position('bottom right'));
+            });
+        }
     }
 }
 
-Ship.$inject = ['$scope', '$routeParams', '$location', '$translate', '$mdDialog', 'headContent', 'headerContent', 'managerShips'];
+Ship.$inject = ['$scope', '$routeParams', '$location', '$translate', '$mdDialog', '$mdToast', 'headContent', 'headerContent', 'managerShips'];
 
 export default Ship;

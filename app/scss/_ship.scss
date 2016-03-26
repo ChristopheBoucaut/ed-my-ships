@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+.task-done {
+    text-decoration: line-through;
+    color: $text-light;
+}
+
+.ship-note {
+    a {
+        color: $orange-principal;
+    }
+}
