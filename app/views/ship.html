@@ -1,4 +1,4 @@
-<form name="shipForm" ng-submit='saveShip()'>
+<form name="shipForm">
     <md-tabs md-dynamic-height md-border-bottom>
         <md-tab label="{{ 'ship.tabs.info'|translate }}">
             <md-content>
@@ -65,7 +65,7 @@
                 <div layout="row" layout-margin>
                     <md-input-container flex="40">
                         <label>{{ 'ship.data.todo.add.label'|translate }}</label>
-                        <input type="text" name="todoAdd" ng-model="todoAdd">
+                        <input type="text" name="newTaskValue" ng-model="newTaskValue" ng-keyup="addTask($event)">
                     </md-input-container>
                     <div flex="10">
                         <md-button class="md-raised md-warn" ng-click="addTask()">{{ 'ship.data.todo.add.register'|translate }}</md-button>
@@ -73,13 +73,9 @@
                 </div>
                 <div layout="row">
                     <md-list flex="100">
-                        <md-list-item>
-                            <p> test </p>
-                            <md-checkbox></md-checkbox>
-                        </md-list-item>
-                        <md-list-item>
-                            <p> test </p>
-                            <md-checkbox></md-checkbox>
+                        <md-list-item ng-repeat="task in ship.todoList">
+                            <p>{{ task.description }}</p>
+                            <md-checkbox ng-model="task.done"></md-checkbox>
                         </md-list-item>
                     </md-list>
                 </div>

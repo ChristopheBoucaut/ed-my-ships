@@ -47,8 +47,13 @@ class Ship {
             }
         };
 
-        $scope.addTask = function () {
-            console.log('on yeah');
+        $scope.addTask = function (event) {
+            // If event is undefined, user uses the button else, he uses enter key.
+            if (event === undefined || event.keyCode == 13) {
+                var newTask = $scope.newTaskValue;
+                $scope.newTaskValue = '';
+                $scope.ship.addTask(newTask);
+            }
         };
 
         $scope.saveShip = function () {

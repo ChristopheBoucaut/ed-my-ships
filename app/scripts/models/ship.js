@@ -44,7 +44,7 @@ const SHIPS_MODELS = [
  * Model to save, load and manage a ship.
  */
 class Ship extends AbstractModel {
-    constructor(id = null, alias = '', model = null, role = null, insuranceCost = null, localisation = '', note = '', todoList = {}) {
+    constructor(id = null, alias = '', model = null, role = null, insuranceCost = null, localisation = '', note = '', todoList = []) {
         super();
         // Auto generate id
         this.id = id;
