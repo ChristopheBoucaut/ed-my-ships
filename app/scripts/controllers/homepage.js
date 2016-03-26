@@ -6,6 +6,17 @@ class Homepage {
 
         $scope.ships = managerShips.loadModel();
         $scope.countShips = Object.keys($scope.ships).length;
+
+        /**
+         * Method to delete a ship.
+         *
+         * @param {string} id
+         */
+        $scope.deleteShip = function (id) {
+            // @TODO : Add a modal to confirm.
+            managerShips.deleteModel(id);
+            delete $scope.ships[id];
+        };
     }
 }
 

@@ -14,7 +14,14 @@
             <md-sidenav ng-if="isHome" md-component-id="left" class="md-sidenav-left">
                 <md-list>
                     <md-list-item class="md-1-line">
-                        <md-button aria="About it" class="md-primary md-raised" href="#/aboutit">{{ 'header.navigation.aboutit'|translate }}</md-button>
+                        <md-button aria="Add ship" class="md-primary md-raised" href="#/ship">
+                            {{ "homepage.add_new_ship"|translate }}
+                        </md-button>
+                    </md-list-item>
+                    <md-list-item class="md-1-line">
+                        <md-button aria="About it" class="md-primary md-raised" href="#/aboutit">
+                            {{ 'header.navigation.aboutit'|translate }}
+                        </md-button>
                     </md-list-item>
                 </md-list>
             </md-sidenav>

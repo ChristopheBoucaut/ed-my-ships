@@ -13,7 +13,11 @@
     },
     "homepage": {
         "add_new_ship": "Ajouter un vaisseau",
-        "not_ships": "Vous ne possédez aucun vaisseau."
+        "not_ships": "Vous ne possédez aucun vaisseau.",
+        "seeShip": "Voir",
+        "deleteShip": "Supprimer",
+        "localisationUnknow": "Localisation inconnue",
+        "todoListEmpty": "Aucune tâche"
     },
     "ship": {
         "create_ship": "Créer un vaisseau",

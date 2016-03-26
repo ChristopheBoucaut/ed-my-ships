@@ -88,10 +88,12 @@
 <div ng-if="!editMode" layout="row" layout-sm="column" layout-xs="column" layout-margin>
     <div flex="40" flex-sm="100" flex-xs="100">
         <h2>{{ 'ship.see_ship'|translate }}</h2>
-        {{ 'ship.data.modelShip.viewMode'|translate }} : {{ currentShipModel.name }}<br>
-        <span ng-if="ship.insuranceCost">{{ 'ship.data.insuranceCost.viewMode.label'|translate }} : {{ ship.insuranceCost|number }} {{ 'ship.data.insuranceCost.viewMode.credit'|translate }}<br></span>
-        <span ng-if="ship.localisation">{{ 'ship.data.localisation.viewMode'|translate }} : {{ ship.localisation }}<br></span>
-        <h2>{{ 'ship.data.todo.viewMode'|translate }}</h2>
+        <p>
+            {{ 'ship.data.modelShip.viewMode'|translate }} : {{ currentShipModel.name }}<br>
+            <span ng-if="ship.insuranceCost">{{ 'ship.data.insuranceCost.viewMode.label'|translate }} : {{ ship.insuranceCost|number }} {{ 'ship.data.insuranceCost.viewMode.credit'|translate }}<br></span>
+            <span ng-if="ship.localisation">{{ 'ship.data.localisation.viewMode'|translate }} : {{ ship.localisation }}<br></span>
+        </p>
+        <h2 ng-if="ship.todoList.length">{{ 'ship.data.todo.viewMode'|translate }}</h2>
         <md-list>
             <md-list-item ng-repeat="task in ship.todoList | orderBy:'done'">
                 <p ng-class="{'task-done': task.done}">{{ task.description }}</p>

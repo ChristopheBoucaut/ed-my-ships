@@ -78,6 +78,15 @@ class AbstractManagerModel {
             }
         }
     }
+
+    /**
+     * Delete a model by its id.
+     *
+     * @param {string} id
+     */
+    deleteModel(id) {
+        this.storage.removeItem(this.getNamespace(), id);
+    }
 }
 
 export default AbstractManagerModel;

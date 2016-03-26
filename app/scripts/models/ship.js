@@ -81,6 +81,20 @@ class Ship extends AbstractModel {
     displayNote() {
         return converter.makeHtml(this.note);
     }
+
+    /**
+     * Count tasks done.
+     */
+    countTasksDone() {
+        var tasksDone = 0;
+        for (var i = 0; i < this.todoList.length; i++) {
+            if (this.todoList[i].done) {
+                tasksDone++;
+            }
+        }
+
+        return tasksDone;
+    }
 }
 
 export default Ship;

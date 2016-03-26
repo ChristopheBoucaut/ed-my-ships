@@ -6,3 +6,27 @@
         <md-button class="md-raised md-warn" href="#/ship/">{{ "homepage.add_new_ship"|translate }}</md-button>
     </p>
 </div>
+
+<div layout="row" layout-sm="column" layout-xs="column" layout-wrap>
+    <md-card flex="30" flex-sm="100" flex-xs="100" ng-repeat="ship in ships">
+        <md-card-content>
+            <h2>{{ ship.alias }}</h2>
+            <p>
+                <span ng-if="ship.localisation">{{ ship.localisation }}</span>
+                <em ng-if="!ship.localisation">{{ 'homepage.localisationUnknow'|translate }}</em>
+            </p>
+            <p>
+                <span ng-if="ship.todoList.length">{{ ship.countTasksDone() }} / {{ ship.todoList.length }}</span>
+                <em ng-if="!ship.todoList.length">{{ 'homepage.todoListEmpty'|translate }}</em>
+            </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button aria="Delete ship" ng-click="deleteShip(ship.id)">
+                {{ 'homepage.deleteShip'|translate }}
+            </md-button>
+            <md-button aria="See ship" class="md-primary md-raised" ng-href="#/ship/{{ ship.id }}">
+                {{ 'homepage.seeShip'|translate }}
+            </md-button>
+        </md-card-actions>
+    </md-card>
+</div>
