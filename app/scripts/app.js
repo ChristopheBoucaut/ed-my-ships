@@ -86,7 +86,8 @@ mainModule.config(['$mdIconProvider', function ($mdIconProvider) {
     var defaultPathIcons = 'img/icons/';
     $mdIconProvider
         .icon('global:menu', defaultPathIcons+'menu.svg')
-        .icon('global:back', defaultPathIcons+'back.svg');
+        .icon('global:back', defaultPathIcons+'back.svg')
+        .icon('global:save', defaultPathIcons+'save.svg');
 }]);
 
 export default nameModule;

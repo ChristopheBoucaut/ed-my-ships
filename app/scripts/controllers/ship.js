@@ -1,7 +1,7 @@
 import ShipModel, {shipsModels} from 'scripts/models/ship';
 
 class Ship {
-    constructor($scope, $routeParams, $translate, headContent, managerShips) {
+    constructor($scope, $routeParams, $translate, headContent, headerContent, managerShips) {
         // Init $scope variables.
         $scope.notSaved = false;
         var titleTag;
@@ -21,6 +21,13 @@ class Ship {
         $translate(titleTag).then(function (title) {
             headContent.setAdditionnalTitle(title);
         });
+
+        headerContent.setMainAction(
+            function () {
+                console.log('save ship !');
+            },
+            'global:save'
+        );
 
         /**
          * Search a ship model in list models
@@ -63,6 +70,6 @@ class Ship {
     }
 }
 
-Ship.$inject = ['$scope', '$routeParams', '$translate', 'headContent', 'managerShips'];
+Ship.$inject = ['$scope', '$routeParams', '$translate', 'headContent', 'headerContent', 'managerShips'];
 
 export default Ship;

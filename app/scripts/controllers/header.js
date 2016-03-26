@@ -1,9 +1,13 @@
 class Header {
-    constructor($scope, $location, $window, $mdSidenav, headContent) {
+    constructor($scope, $location, $window, $mdSidenav, headContent, headerContent) {
         $scope.title = null;
+        $scope.mainAction = null;
         $scope.isHome = true;
         $scope.$on(headContent.EVENT_CHANGE_TITLE, function (event, title) {
             $scope.title = title;
+        });
+        $scope.$on(headerContent.EVENT_CHANGE_MAIN_ACTION, function (event, mainAction) {
+            $scope.mainAction = mainAction;
         });
 
         $scope.openLeftMenu = function() {
@@ -24,6 +28,6 @@ class Header {
     }
 }
 
-Header.$inject = ['$scope', '$location', '$window', '$mdSidenav', 'headContent'];
+Header.$inject = ['$scope', '$location', '$window', '$mdSidenav', 'headContent', 'headerContent'];
 
 export default Header;

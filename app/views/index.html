@@ -30,10 +30,10 @@
                         <span ng-if="title">{{ title }}</span>
                         <span ng-if="!title">{{ 'header.title.home'|translate }}</span>
                     </h2>
-                    <!-- <span flex></span>
-                    <md-button class="md-icon-button" aria-label="More">
-                        <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
-                    </md-button> -->
+                    <span flex></span>
+                    <md-button class="md-icon-button" aria-label="main-action" ng-if="mainAction" ng-click="mainAction.callback()">
+                        <md-icon md-svg-icon="{{ mainAction.icon }}"></md-icon>
+                    </md-button>
                   </div>
             </md-toolbar>
         </header>

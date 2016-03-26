@@ -1,3 +1,4 @@
+// Manage the <head> HTML
 class head {
     constructor($scope, headContent) {
         $scope.additionnalTitle = null;
