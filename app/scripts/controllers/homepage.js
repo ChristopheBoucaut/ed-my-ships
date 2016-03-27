@@ -1,5 +1,5 @@
 class Homepage {
-    constructor($scope, headContent, headerContent, managerShips) {
+    constructor($scope, $mdDialog, $translate, headContent, headerContent, managerShips) {
         // Reset the title.
         headContent.resetTitle();
         headerContent.removeMainAction();
@@ -10,16 +10,34 @@ class Homepage {
         /**
          * Method to delete a ship.
          *
-         * @param {string} id
+         * @param {Ship} ship
          */
-        $scope.deleteShip = function (id) {
-            // @TODO : Add a modal to confirm.
-            managerShips.deleteModel(id);
-            delete $scope.ships[id];
+        $scope.deleteShip = function (ship) {
+            var msgToModal = ['homepage.deleteShipModal.title', 'homepage.deleteShipModal.content', 'homepage.deleteShipModal.accept', 'homepage.deleteShipModal.cancel'];
+            $translate(msgToModal, {nameShip: ship.alias}).then(function (msgs) {
+                confirm = $mdDialog.confirm({
+                    title: msgs['homepage.deleteShipModal.title'],
+                    textContent: msgs['homepage.deleteShipModal.content'],
+                    ok: msgs['homepage.deleteShipModal.accept'],
+                    cancel: msgs['homepage.deleteShipModal.cancel'],
+                });
+                $mdDialog
+                    .show(confirm)
+                    .then(function () {
+                        // Accept to delete.
+                        managerShips.deleteModel(ship.id);
+                        delete $scope.ships[ship.id];
+                    }, function() {
+                        // Cancel to delete.
+                    })
+                    .finally(function() {
+                        confirm = undefined;
+                    });
+            });
         };
     }
 }
 
-Homepage.$inject = ['$scope', 'headContent', 'headerContent', 'managerShips'];
+Homepage.$inject = ['$scope', '$mdDialog', '$translate', 'headContent', 'headerContent', 'managerShips'];
 
 export default Homepage;

@@ -147,7 +147,7 @@ class Ship {
                         ok: dialog['ship.errorModal.fix']
                     });
                     $mdDialog
-                        .show( alert )
+                        .show(alert)
                         .finally(function() {
                             alert = undefined;
                         });

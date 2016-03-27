@@ -17,7 +17,13 @@
         "seeShip": "Voir",
         "deleteShip": "Supprimer",
         "localisationUnknow": "Localisation inconnue",
-        "todoListEmpty": "Aucune tâche"
+        "todoListEmpty": "Aucune tâche",
+        "deleteShipModal": {
+            "title": "Valider la suppression",
+            "content": "Vous appretez à supprimer le vaisseau : {{ nameShip }}",
+            "accept": "Valider",
+            "cancel": "Annuler"
+        }
     },
     "ship": {
         "create_ship": "Créer un vaisseau",
