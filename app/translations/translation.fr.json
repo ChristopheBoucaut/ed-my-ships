@@ -86,5 +86,25 @@
                 "insuranceCost": "L'assurance renseignée est incorrecte."
             }
         }
+    },
+    "aboutit": {
+        "project": {
+            "title": "L'application",
+            "content": "L'application est encore en BETA. Cette application permet d'organiser sa flotte de vaisseaux sur le jeu Elite: Dangerous. Il est possible de créer/modifier/supprimer ses vaisseaux. Vous pouvez rajouter des notes sur les vaisseaux (la syntaxe Markdown est supportée)."
+        },
+        "next": {
+            "title": "A venir",
+            "content": "Les fonctionnalités à venir : Recherche sur la page d'accueil, importer/exporter vos vaisseaux, application android."
+        },
+        "github": {
+            "title": "Sur Github",
+            "content": "Tout le code est disponible en opensource sans limitation sur son utilisation. Vous pouvez contribuer/proposer des améliorations ou des traductions via le projet Github. L'application est basée sur angular, angular-material et utilise brunch.io pour assembler le tout.",
+            "access": "Accéder au code"
+        },
+        "contributors": {
+            "title": "Contributeurs",
+            "content": "Initié et développé par Christophe Boucaut.",
+            "access": "Christophe Boucaut"
+        }
     }
 }
